@@ -1,3 +1,16 @@
+
+#lass SortingRobot:
+#   def __init__(self, l):
+#       """
+#       SortingRobot takes a list and sorts it.
+#       """
+#       self._list = l
+#       self._item = None
+#       self._position = 0
+#       self._light = "OFF"
+#       self._time = 0
+
+
 class SortingRobot:
     def __init__(self, l):
         """
@@ -96,8 +109,140 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
+        # if can't move right and light is off
+        #if self.can_move_right() == False and self.light_is_on() == False:
+        #   return self
+
+        # I NEED TO ESTABLISH A BASE CASE TO TERMINATE THE RECURSION. How do I know the sorting is done. That is the main problem. How Do i check the sort is complete. That is the base case
+        # if the lights off, then terminate
+        if self.light_is_on == False:
+            return self.l
+
+        self.set_light_on() # turn light on
+
+        # set light is on 
+        if self.light_is_on() == True:
+            # pick up item by swapping none with the item at position 0
+
+            while self.can_move_right() == True:
+                self.swap_item()
+                # move to the right and then compare and then swap
+                self.move_right()
+                if self.compare_item() == 1:
+                    self.swap_item()
+        
+                    # turn the light off at this location. 
+                    #self.set_light_off()
+                    # repeat the entire process
+                    #return self.sort()
+                    # if we can't swap here, then keep moving right. 
+                    # decided to use while loop
+                #else:
+                #    # turn light off
+                #    self.set_light_off()
+                #    # repeat theprocess
+                #    return self.sort()
+            
+            #if self.can_move_right() == False and selfcompare_item() == None:
+            #    self.set_light_off()
+            #if we can't move right anymore, then goleft. 
+            if self.can_move_right == False and self.can_move_left == True:
+                while self.can_move_left == True:
+                    self.move_left()
+                    if self.compare_item() == 1:
+                        self.swap_item()
+
+                # once the while loop condition becomes false, repeat the function   
+                return self.sort()
+            #return self.sort() + self.set_light_off()
+
+                
+
+
+    #def sort(self):
+    #    """
+    #    Sort the robot's list.
+    #    """
+    #    #for i in self.l:
+    #    for i in self.l:
+    #        # define the current item
+    #        self._item = self.l[i]
+    #        if self.compare_item() == 1:
+    #            self.swap_item()
+
+    #    while self.move_right == True:
+    #        for i in self.l:
+    #            # define the current item
+    #            self._item = self.l[i]
+    #            
+    #            if self.compare_item() == #1:
+    #                self.swap_item()
+    #                # what happens if no swap
+                #else:
+                #    self._item = self.l[self._position]
+
+        # recursively repeat this process until when? How do we know the list is fully sorted. 
+        #sort()
+
+        #for i in range(len(l)):
+        #        # define the current item
+        #        self._item = l[i]
+        #        
+        #        if move_right() == True:
+        #            if compare_item() == 1:
+        #                swap_item()
+        #                # what happens if no #swap
+        #            else:
+                        
+        #    # compare it to what is in front
+        #    if compare_item() == 1:
+        #        # swap items if the one in #front is smaller
+        #        swap_item()
+        #    if move_right() == True:
+
+
+
+            # if move robot to the right is true,
+            # drop current item
+            # then repeat the process and the new item is what is at position 2
+            # if move robot right is false
+
+
         # Fill this out
-        pass
+
+        # beginning at index 0 and Index 1
+
+        # if the item at index 1 > index 0, 
+        # then swap them. if not, move on and compare index 1 and index 2
+        # if you swap index 1 & 0, then move right and compare index 2 to index 3.
+
+        # repeat this process recursively until all items are sorted. 
+
+        # robot at position 0, then picks up item at position 0. 
+        # it then compares that item to the item in front of it. 
+        # if the held item is greater than the item in front of it which means result is  1, then swap
+        # perform swap. 
+        # then move right and pick up the next item
+        # and repeat the process. 
+
+        #for i in range(len(l)):
+        #    # define the current item
+        #    self._item = l[i]
+        #    # define the position to refer to
+        #    self._position = l[i + 1]
+#
+        #    # compare it to what is in front
+        #    if compare_item() == 1:
+        #        # swap items if the one in #front is smaller
+        #        swap_item()
+        #    if move_right() == True:
+
+
+
+            # if move robot to the right is true,
+            # drop current item
+            # then repeat the process and the new item is what is at position 2
+            # if move robot right is false
 
 
 if __name__ == "__main__":
